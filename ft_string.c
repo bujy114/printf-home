@@ -17,10 +17,10 @@ void	ft_string(char *args, int *count)
 	size_t	nofc;
 
 	nofc = ft_strlen(args);
-	(*count)+=nofc;
-	while(nofc != 0)
+	(*count) += nofc;
+	while (nofc != 0)
 	{
-		write(1,args, 1);
+		write(1, args, 1);
 		args++;
 		nofc--;
 	}

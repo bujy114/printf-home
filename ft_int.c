@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-void ft_int(int i, int *count)
+void	ft_int(int i, int *count)
 {
-	char *s;
+	char	*s;
 
 	s = ft_itoa(i);
 	ft_string(s, count);

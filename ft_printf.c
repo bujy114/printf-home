@@ -6,27 +6,37 @@
 /*   By: lsallam <lsallam@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/05 11:28:24 by lsallam           #+#    #+#             */
-/*   Updated: 2026/10/05 17:20:00 by lsallam          ###   ########.fr       */
+/*   Updated: 2026/10/06 11:25:36 by lsallam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	type(char sign, va_list args, int *count)
+static void	type(char sign, va_list *args, int *count)
 {
 	if (sign == 'c')
-		ft_char(va_arg(args, int), count);
-	if (sign == 's')
-		ft_string(va_arg(args, char *), count);
-	if (sign == 'd' || sign == 'i')
-		ft_int(va_arg(args, int), count);
+		ft_char(va_arg(*args, int), count);
+	else if (sign == 's')
+		ft_string(va_arg(*args, char *), count);
+	else if (sign == 'd' || sign == 'i')
+		ft_int(va_arg(*args, int), count);
+	else if (sign == 'p')
+		ft_ptr(va_arg(*args, void *), count);
+	else if (sign == 'u')
+		ft_unsigned(va_arg(*args, unsigned int), count);
+	else if (sign == 'x' || sign == 'X')
+		ft_hex(va_arg(*args, unsigned int), sign, count);
+	else if(sign == '%')
+		ft_char('%', count);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	int	count;
-	va_list args;
-
+	int		count;
+	va_list	args;
+	
+	if (format == NULL)
+		return (-1);
 	count = 0;
 	va_start(args, format);
 	while (*format != '\0')
@@ -34,7 +44,9 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			type(*format, args, &count);
+			if (*format == '\0')
+				break;
+			type(*format, &args, &count);
 			format++;
 			continue ;
 		}
