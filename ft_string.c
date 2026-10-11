@@ -16,6 +16,8 @@ void	ft_string(char *args, int *count)
 {
 	size_t	nofc;
 
+	if (!args)
+		args = "(null)";
 	nofc = ft_strlen(args);
 	(*count) += nofc;
 	while (nofc != 0)

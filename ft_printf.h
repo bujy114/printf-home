@@ -15,17 +15,16 @@
 
 # include <stdarg.h>
 # include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
-
+# include <unistd.h>
 
 int		ft_printf(const char *format, ...);
 void	ft_char(char c, int *count);
 void	ft_string(char *args, int *count);
 void	ft_int(int i, int *count);
 void	ft_ptr(void *ptr, int *count);
-void ft_unsigned(unsigned int u, int *count);
-void ft_hex(unsigned long n , char c, int *count);
+void	ft_unsigned(unsigned int u, int *count);
+void	ft_hex(unsigned long n, char c, int *count);
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

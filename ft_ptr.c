@@ -22,10 +22,17 @@ static void	pri(unsigned long p, int *count)
 	write(1, &hex[p % 16], 1);
 	(*count)++;
 }
+
 void	ft_ptr(void *ptr, int *count)
 {
-	unsigned long p;
+	unsigned long	p;
 
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		(*count) += 5;
+		return ;
+	}
 	p = (unsigned long)ptr;
 	write(1, "0x", 2);
 	(*count) += 2;

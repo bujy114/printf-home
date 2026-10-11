@@ -17,5 +17,8 @@ void	ft_int(int i, int *count)
 	char	*s;
 
 	s = ft_itoa(i);
+	if (!s)
+		return ;
 	ft_string(s, count);
+	free(s);
 }

@@ -26,7 +26,7 @@ static void	type(char sign, va_list *args, int *count)
 		ft_unsigned(va_arg(*args, unsigned int), count);
 	else if (sign == 'x' || sign == 'X')
 		ft_hex(va_arg(*args, unsigned int), sign, count);
-	else if(sign == '%')
+	else if (sign == '%')
 		ft_char('%', count);
 }
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 {
 	int		count;
 	va_list	args;
-	
+
 	if (format == NULL)
 		return (-1);
 	count = 0;
@@ -45,7 +45,7 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0')
-				break;
+				break ;
 			type(*format, &args, &count);
 			format++;
 			continue ;

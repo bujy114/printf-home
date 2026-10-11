@@ -12,12 +12,13 @@
 
 #include "ft_printf.h"
 
-void ft_unsigned(unsigned int u, int *count)
+void	ft_unsigned(unsigned int u, int *count)
 {
-    char c;
-    if (u >= 10)
-        ft_unsigned(u/10, count);
-    c = (u%10) + '0';
-    write(1, &c, 1);
-    (*count)++;
+	char	c;
+
+	if (u >= 10)
+		ft_unsigned(u / 10, count);
+	c = (u % 10) + '0';
+	write(1, &c, 1);
+	(*count)++;
 }
